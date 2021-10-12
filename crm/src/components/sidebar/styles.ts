@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Sidebar = styled.div`
   width: 0px;
-  background-image: linear-gradient(#113873, #478978);
+  overflow: hidden;
+  background: var(--color-primary);
   background-size: 200%;
   background-position: 0 100%;
   position: absolute;
@@ -10,12 +11,11 @@ export const Sidebar = styled.div`
   left: 0;
   height: 100%;
   transition: 300ms ease-in-out;
-  z-index: 1;
+  z-index: 100;
   overflow: hidden;
-  cursor: pointer;
 
   &.sidebar--expanded {
-    width: 300px !important;
+    width: 250px !important;
     background-size: 100%;
     background-position: 0 0;
   }
@@ -26,18 +26,23 @@ export const Sidebar = styled.div`
 `;
 
 export const Shape = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-  width: 360px;
-  background: linear-gradient(#316cc5 80%, transparent);
-  height: 370px;
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(#316cc5 100%, transparent);
   border-radius: 100%;
-  margin-left: -80px;
-  margin-top: -80px;
+  margin-left: -142px;
+  margin-top: -200px;
   z-index: -1;
   opacity: 0;
-  transform: scale(0.4) translateY(-400px) translateX(300px);
+  transform: scale(0.4) translateY(-400px) translateX(250px);
   margin-left: 0;
   margin-top: 0;
   transition: 400ms ease;
@@ -52,8 +57,8 @@ export const Shape = styled.div`
 
   .sidebar--expanded & {
     animation: float 6s infinite alternate;
-    margin-left: -80px;
-    margin-top: -80px;
+    margin-left: -142px;
+    margin-top: -200px;
     opacity: 0.4;
     transform: scale(1) translateY(0);
 
@@ -62,4 +67,53 @@ export const Shape = styled.div`
       transform: scale(1) translateY(100px) translateX(170px);
     }
   }
+`;
+
+export const TopArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 220px;
+  padding: 24px;
+`;
+
+export const Avatar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-image: url(https://www.svgrepo.com/show/63886/avatar.svg);
+  background-position: center center;
+  background-size: cover;
+`;
+
+export const Name = styled.h3`
+  font-size: 16px;
+  margin-top: 12px;
+  color: var(--text-secondary-color);
+  cursor: default;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+export const Job = styled.h4`
+  font-size: 14px;
+  color: var(--text-secondary-color);
+  cursor: default;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+export const BottomArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1;
+  height: calc(100% - 220px);
+  padding: 0px 24px 24px;
 `;

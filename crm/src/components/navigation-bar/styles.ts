@@ -4,14 +4,14 @@ export const Navigation = styled.nav`
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
-  background-color: #4584e3;
+  background-color: var(--color-primary);
   height: 54px;
-  box-shadow: 0 0 0.7rem 0.4rem rgb(0 0 0 / 30%);
+  box-shadow: 0px 3px 8px rgb(0 0 0 / 10%), 0 6px 7px rgb(0 0 0 / 10%);
   transform: translateZ(1px);
 `;
 
 export const SidebarToggler = styled.nav`
-  background-color: #1773e3;
+  background-color: var(--color-primary);
   width: 54px;
   height: 54px;
   border: 0;

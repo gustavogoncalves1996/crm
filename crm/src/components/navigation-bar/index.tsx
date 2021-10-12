@@ -4,7 +4,7 @@ import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
 
 import {
-  Avatar,
+  // Avatar,
   //   LeftLinks,
   Link,
   Navigation,
@@ -98,11 +98,11 @@ export const NavigationBarComponent: React.FunctionComponent<Props> = (
             }}
           />
         </Link>
-        <Link href="#">
+        {/* <Link href="#">
           <Avatar>
             <img src="https://www.svgrepo.com/show/63886/avatar.svg" alt="" />
           </Avatar>
-        </Link>
+        </Link> */}
       </RightLinks>
     </Navigation>
   );

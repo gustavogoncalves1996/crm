@@ -5,7 +5,7 @@ export const Card = styled.div`
   flex-direction: column;
   justify-content: center;
   background: #ffffff;
-  box-shadow: 2px 10px 20px rgb(0 0 0 / 10%);
+  box-shadow: 0px 3px 8px rgb(0 0 0 / 10%), 0 6px 7px rgb(0 0 0 / 10%);
   border-radius: 7px;
   text-align: center;
   position: relative;
@@ -13,6 +13,10 @@ export const Card = styled.div`
   padding: 30px 25px 20px;
   height: 166px;
   flex-grow: 1;
+
+  @media (max-width: 800px) {
+    padding: 26px 16px 16px;
+  }
 `;
 
 export const Border = styled.div`
@@ -28,11 +32,34 @@ export const Border = styled.div`
 export const Title = styled.h4`
   color: #6c6c6c;
   font-size: 20px;
+  cursor: default;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media (min-width: 800px) and (max-width: 1000px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 799px) {
+    font-size: 16px;
+  }
 `;
 
 export const Description = styled.span`
   display: block;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 18px;
   color: #323c43;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media (min-width: 800px) and (max-width: 1000px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 799px) {
+    font-size: 14px;
+  }
 `;

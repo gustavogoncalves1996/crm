@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface StyledProps {
+  open: boolean;
+}
+
 export const Container = styled.section`
   width: 100%;
   display: flex;
@@ -10,8 +14,8 @@ export const Container = styled.section`
   z-index: 2;
 
   &.main-content--expanded {
-    margin-left: 300px;
-    width: calc(100% - 300px);
+    margin-left: 250px;
+    width: calc(100% - 250px);
   }
 `;
 
@@ -52,7 +56,10 @@ export const Body = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 54px);
+  padding: 24px;
+  box-sizing: border-box;
+  overflow-y: scroll;
   padding: 24px;
 `;
 
@@ -62,6 +69,10 @@ export const Full = styled.div`
   padding: 16px 0px 32px;
   justify-content: center;
   width: 100%;
+
+  @media (max-width: 800px) {
+    padding: 0px 0px 16px;
+  }
 `;
 
 export const ContainerHalf = styled.div`
@@ -70,15 +81,53 @@ export const ContainerHalf = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-top: 1rem;
+
+  ${(props: StyledProps): string =>
+    props.open
+      ? `
+    flex-direction: column;
+    flex-wrap: wrap;
+  `
+      : ""}
+
+  @media (max-width: 599px) {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 `;
 
 export const Half = styled.div`
-  flex: 1;
+  width: 100%;
   height: 400px;
-  box-shadow: 0 3px 8px rgba(lightgray, 0.1), 0 6px 7px rgba(lightgray, 0.1);
+  box-shadow: 0px 3px 8px rgb(0 0 0 / 10%), 0 6px 7px rgb(0 0 0 / 10%);
   background: white;
 
   &:first-child {
     margin-right: 1rem;
+
+    ${(props: StyledProps): string => (props.open ? "margin-right: 0rem;" : "")}
+
+    @media (max-width: 599px) {
+      margin-right: 0rem;
+    }
+  }
+
+  @media (min-width: 600px) and (max-width: 1000px) {
+    height: 300px;
+  }
+
+  ${(props: StyledProps): string =>
+    props.open
+      ? `
+      height: 400px;
+      margin-top: 0rem !important;
+      margin-bottom: 3rem;
+  `
+      : ""}
+
+  @media (max-width: 599px) {
+    height: 400px;
+    margin-top: 0rem !important;
+    margin-bottom: 3rem;
   }
 `;

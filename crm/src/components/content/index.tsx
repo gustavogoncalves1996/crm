@@ -20,21 +20,21 @@ export const ContentComponent: React.FunctionComponent<Props> = ({
       <Body>
         <Full>
           <SmallCardComponent
-            gradient={{ initial: "#113873", final: "#689BE8" }}
+            gradient={{ initial: "#113873", final: "#4584E3" }}
           />
           <SmallCardComponent
-            containerStyle={{ margin: "0px 40px" }}
-            gradient={{ initial: "#689BE8", final: "#478978" }}
+            containerStyle={{ margin: "0px 20px" }}
+            gradient={{ initial: "#4584E3", final: "#689BE8" }}
           />
           <SmallCardComponent
-            gradient={{ initial: "#478978", final: "#C7DFC5" }}
+            gradient={{ initial: "#689BE8", final: "#8CB3EE" }}
           />
         </Full>
-        <ContainerHalf>
-          <Half>
+        <ContainerHalf open={open}>
+          <Half open={open}>
             <ChartComponent series={10} dataType="time" />
           </Half>
-          <Half>
+          <Half open={open}>
             <ChartComponent series={3} dataType="ordinal" />
           </Half>
         </ContainerHalf>

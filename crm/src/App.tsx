@@ -29,43 +29,99 @@ export interface ModalTeamType {
 const globalColors = [
   {
     key: "color-primary",
-    value: "rgb(120, 75, 74)",
+    value: "rgb(69, 132, 227)",
   },
   {
     key: "color-primary-100",
-    value: "rgba(120, 75, 74, 0.1)",
+    value: "rgba(69, 132, 227, 0.1)",
   },
   {
     key: "color-primary-200",
-    value: "rgba(120, 75, 74, 0.2)",
+    value: "rgba(69, 132, 227, 0.2)",
   },
   {
     key: "color-primary-300",
-    value: "rgba(120, 75, 74, 0.3)",
+    value: "rgba(69, 132, 227, 0.3)",
   },
   {
     key: "color-primary-400",
-    value: "rgba(120, 75, 74, 0.4)",
+    value: "rgba(69, 132, 227, 0.4)",
   },
   {
     key: "color-primary-500",
-    value: "rgba(120, 75, 74, 0.5)",
+    value: "rgba(69, 132, 227, 0.5)",
   },
   {
     key: "color-primary-600",
-    value: "rgba(120, 75, 74, 0.6)",
+    value: "rgba(69, 132, 227, 0.6)",
   },
   {
     key: "color-primary-700",
-    value: "rgba(120, 75, 74, 0.7)",
+    value: "rgba(69, 132, 227, 0.7)",
   },
   {
     key: "color-primary-800",
-    value: "rgba(120, 75, 74, 0.8)",
+    value: "rgba(69, 132, 227, 0.8)",
   },
   {
     key: "color-primary-900",
-    value: "rgba(120, 75, 74, 0.9)",
+    value: "rgba(69, 132, 227, 0.9)",
+  },
+  {
+    key: "color-secondary",
+    value: "rgb(71, 137, 120)",
+  },
+  {
+    key: "color-secondary-100",
+    value: "rgba(71, 137, 120, 0.1)",
+  },
+  {
+    key: "color-secondary-200",
+    value: "rgba(71, 137, 120, 0.2)",
+  },
+  {
+    key: "color-secondary-300",
+    value: "rgba(71, 137, 120, 0.3)",
+  },
+  {
+    key: "color-secondary-400",
+    value: "rgba(71, 137, 120, 0.4)",
+  },
+  {
+    key: "color-secondary-500",
+    value: "rgba(71, 137, 120, 0.5)",
+  },
+  {
+    key: "color-secondary-600",
+    value: "rgba(71, 137, 120, 0.6)",
+  },
+  {
+    key: "color-secondary-700",
+    value: "rgba(71, 137, 120, 0.7)",
+  },
+  {
+    key: "color-secondary-800",
+    value: "rgba(71, 137, 120, 0.8)",
+  },
+  {
+    key: "color-secondary-900",
+    value: "rgba(71, 137, 120, 0.9)",
+  },
+  {
+    key: "color-error",
+    value: "rgba(214, 92, 108, 1)",
+  },
+  {
+    key: "color-error-100",
+    value: "rgba(214, 92, 108, 0.1)",
+  },
+  {
+    key: "color-error-300",
+    value: "rgba(214, 92, 108, 0.3)",
+  },
+  {
+    key: "color-error-500",
+    value: "rgba(214, 92, 108, 0.5)",
   },
   {
     key: "background-color",
