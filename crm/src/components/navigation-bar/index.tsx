@@ -41,49 +41,11 @@ export const NavigationBarComponent: React.FunctionComponent<Props> = (
   return (
     <Navigation>
       {sidebarToggler(props.open, props.setOpen)}
-      {/* <LeftLinks>
-        <Link href="#">
-          <i
-            className="example-icon"
-            style={{
-              backgroundColor: "#f2f2f2",
-              width: 24,
-              height: 24,
-              borderRadius: "50%",
-              display: "inline-block",
-            }}
-          />
-        </Link>
-        <Link href="#">
-          <i
-            className="example-icon"
-            style={{
-              backgroundColor: "#f2f2f2",
-              width: 24,
-              height: 24,
-              borderRadius: "50%",
-              display: "inline-block",
-            }}
-          />
-        </Link>
-        <Link href="#">
-          <i
-            className="example-icon"
-            style={{
-              backgroundColor: "#f2f2f2",
-              width: 24,
-              height: 24,
-              borderRadius: "50%",
-              display: "inline-block",
-            }}
-          />
-        </Link>
-      </LeftLinks> */}
       <RightLinks>
         <Link href="#">
           <NotificationsNoneOutlinedIcon
             style={{
-              color: "#f2f2f2",
+              color: "var(--background-color,rgb(245,242,235))",
               width: 24,
               height: 24,
             }}
@@ -92,7 +54,7 @@ export const NavigationBarComponent: React.FunctionComponent<Props> = (
         <Link href="#">
           <SettingsOutlinedIcon
             style={{
-              color: "#f2f2f2",
+              color: "var(--background-color,rgb(245,242,235))",
               width: 24,
               height: 24,
             }}

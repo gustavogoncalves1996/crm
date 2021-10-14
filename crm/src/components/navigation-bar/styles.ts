@@ -25,11 +25,11 @@ export const SidebarToggler = styled.nav`
   cursor: pointer;
 
   &:hover {
-    background-color: #1467cc;
+    background-color: var(--surface-color-100);
   }
 
   &:active {
-    background-color: #1467cc;
+    background-color: var(--surface-color-100);
   }
 
   &.active {
@@ -45,7 +45,7 @@ export const SidebarToggler = styled.nav`
   }
 
   & > span {
-    background-color: #ffffff;
+    background-color: var(--surface-color);
     width: 20px;
     height: 0.2rem;
     margin-bottom: 0.3rem;
@@ -76,7 +76,7 @@ export const RightLinks = styled.div`
 `;
 
 export const Link = styled.a`
-  background-color: #418eec;
+  background-color: var(--color-primary);
   width: 64px;
   height: 54px;
   display: flex;
@@ -85,7 +85,7 @@ export const Link = styled.a`
   transition: background-color 64ms ease-out;
 
   &:hover {
-    background-color: #1773e3;
+    background-color: var(--surface-color-100);
   }
 `;
 

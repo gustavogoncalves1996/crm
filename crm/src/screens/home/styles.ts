@@ -4,54 +4,6 @@ interface StyledProps {
   open: boolean;
 }
 
-export const Container = styled.section`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-left: 0px;
-  transition: 300ms ease-in-out;
-  position: relative;
-  z-index: 2;
-
-  &.main-content--expanded {
-    margin-left: 250px;
-    width: calc(100% - 250px);
-  }
-`;
-
-export const Header = styled.section`
-  height: 5rem;
-  width: 100%;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 1rem 0 2rem;
-
-  span {
-    width: 16rem;
-    height: 2rem;
-    background: #e5e5e7;
-  }
-
-  ul {
-    list-style: none;
-    display: flex;
-    align-items: center;
-
-    li {
-      width: 6rem;
-      height: 2rem;
-      margin: 0 1rem;
-      background: $dark-grey;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-`;
-
 export const Body = styled.div`
   display: flex;
   flex-direction: column;
@@ -59,7 +11,7 @@ export const Body = styled.div`
   height: calc(100% - 54px);
   padding: 24px;
   box-sizing: border-box;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 24px;
 `;
 
@@ -100,7 +52,8 @@ export const Half = styled.div`
   width: 100%;
   height: 400px;
   box-shadow: 0px 3px 8px rgb(0 0 0 / 10%), 0 6px 7px rgb(0 0 0 / 10%);
-  background: white;
+  background: var(--surface-color);
+  border-radius: 6px;
 
   &:first-child {
     margin-right: 1rem;

@@ -4,7 +4,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #ffffff;
+  background: var(--surface-color);
   box-shadow: 0px 3px 8px rgb(0 0 0 / 10%), 0 6px 7px rgb(0 0 0 / 10%);
   border-radius: 7px;
   text-align: center;
@@ -30,7 +30,7 @@ export const Border = styled.div`
 `;
 
 export const Title = styled.h4`
-  color: #6c6c6c;
+  color: var(--text-primary-text-color);
   font-size: 20px;
   cursor: default;
   overflow: hidden;
@@ -50,7 +50,7 @@ export const Description = styled.span`
   display: block;
   font-weight: 600;
   font-size: 18px;
-  color: #323c43;
+  color: var(--text-primary-title-color);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

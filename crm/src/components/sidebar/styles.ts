@@ -114,6 +114,11 @@ export const BottomArea = styled.div`
   flex-direction: column;
   width: 100%;
   flex-grow: 1;
-  height: calc(100% - 220px);
-  padding: 0px 24px 24px;
+  height: calc(100% - 248px);
+  padding: 0px 24px;
+  margin-bottom: 24px;
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;

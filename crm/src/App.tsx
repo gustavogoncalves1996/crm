@@ -1,7 +1,8 @@
 import React from "react";
 
-import { AppContainer, getGlobalStyle, Main } from "./App.styles";
-import { SidebarComponent, ContentComponent } from "./components";
+import { AppContainer, getGlobalStyle, Main, Container } from "./App.styles";
+import { SidebarComponent, NavigationBarComponent } from "./components";
+import { Home, InputsManagement, OuputsManagement } from "./screens";
 
 export interface ModalType {
   open: boolean;
@@ -26,10 +27,15 @@ export interface ModalTeamType {
   languages: ModalContent[];
 }
 
-const globalColors = [
+export interface ThemeProps {
+  key: string;
+  value: string;
+}
+
+const defaultGlobalColors = [
   {
     key: "color-primary",
-    value: "rgb(69, 132, 227)",
+    value: "rgba(69, 132, 227, 1)",
   },
   {
     key: "color-primary-100",
@@ -69,7 +75,7 @@ const globalColors = [
   },
   {
     key: "color-secondary",
-    value: "rgb(71, 137, 120)",
+    value: "rgba(71, 137, 120, 1)",
   },
   {
     key: "color-secondary-100",
@@ -125,15 +131,19 @@ const globalColors = [
   },
   {
     key: "background-color",
-    value: "rgb(245, 242, 235)",
+    value: "rgba(245, 242, 235, 1)",
   },
   {
     key: "surface-color",
-    value: "rgb(255, 255, 255)",
+    value: "rgba(255, 255, 255, 1)",
   },
   {
     key: "surface-color-50",
     value: "rgba(255, 255, 255, 0.05)",
+  },
+  {
+    key: "surface-color",
+    value: "rgba(255, 255, 255, 1)",
   },
   {
     key: "surface-color-100",
@@ -160,8 +170,12 @@ const globalColors = [
     value: "rgba(255, 255, 255, 0.8)",
   },
   {
+    key: "surface-color-900",
+    value: "rgba(255, 255, 255, 0.9)",
+  },
+  {
     key: "dark-surface-color",
-    value: "rgb(0, 0, 0)",
+    value: "rgba(0, 0, 0, 1)",
   },
   {
     key: "dark-surface-color-250",
@@ -189,25 +203,83 @@ const globalColors = [
   },
   {
     key: "text-secondary-color",
-    value: "rgb(255, 255, 255)",
+    value: "rgba(255, 255, 255, 1)",
   },
   {
     key: "box-shadow-primary-color",
     value: "rgba(0, 0, 0, 0.15)",
   },
+  {
+    key: "dark-box-shadow-primary-color",
+    value: "rgba(255, 255, 255, 0.15)",
+  },
 ];
+
+export enum Screens {
+  empty = "",
+  home = "home",
+  warehouseIn = "warehouseIn",
+  warehouseOut = "warehouseOut",
+  laboratory = "laboratory",
+  productionTinturaria = "productionTinturaria",
+  productionAcabamentos = "productionAcabamentos",
+  productionMaquina = "productionMaquina",
+  productionOperador = "productionOperador",
+  productionFase = "productionFase",
+}
+
+const getScreen = (key: string, props: any): React.ReactNode => {
+  switch (key) {
+    case Screens.home:
+      return <Home {...props} />;
+    case Screens.warehouseIn:
+      return <InputsManagement {...props} />;
+    case Screens.warehouseOut:
+      return <OuputsManagement {...props} />;
+    case Screens.laboratory:
+      return;
+    case Screens.productionTinturaria:
+      return;
+    case Screens.productionAcabamentos:
+      return;
+    case Screens.productionMaquina:
+      return;
+    case Screens.productionOperador:
+      return;
+    case Screens.productionFase:
+      return;
+    default:
+      return;
+  }
+};
 
 const App: React.FunctionComponent<{}> = () => {
   const [sidebar, setSidebar] = React.useState(false);
-
+  const [screen, setScreen] = React.useState(Screens.home);
+  const [globalColors, setTheme] = React.useState(defaultGlobalColors);
   const GlobalStyle = getGlobalStyle(globalColors);
 
   return (
     <AppContainer>
       <GlobalStyle />
       <Main>
-        <SidebarComponent open={sidebar} setOpen={setSidebar} />
-        <ContentComponent open={sidebar} setOpen={setSidebar} />
+        <SidebarComponent
+          open={sidebar}
+          setOpen={setSidebar}
+          screen={screen}
+          setScreen={setScreen}
+        />
+        <Container
+          className={`main-content ${sidebar ? "main-content--expanded" : ""}`}
+        >
+          <NavigationBarComponent open={sidebar} setOpen={setSidebar} />
+          {getScreen(screen, {
+            open: sidebar,
+            setOpen: setSidebar,
+            screen,
+            setScreen,
+          })}
+        </Container>
       </Main>
     </AppContainer>
   );

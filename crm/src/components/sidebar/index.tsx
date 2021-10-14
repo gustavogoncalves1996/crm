@@ -1,20 +1,10 @@
 import React from "react";
 
-// import {
-//   ListSubheader,
-//   List,
-//   ListItemIcon,
-//   ListItemText,
-//   Collapse,
-// } from "@material-ui/core";
+// import SettingsSystemDaydreamOutlinedIcon from "@material-ui/icons/SettingsSystemDaydreamOutlined";
+import StorageOutlinedIcon from "@material-ui/icons/StorageOutlined";
+import HomeOutlined from "@material-ui/icons/HomeOutlined";
 
-// import SendRoundedIcon from "@material-ui/icons/SendRounded";
-// import StarBorderRoundedIcon from "@material-ui/icons/StarBorderRounded";
-// import ExpandLessRoundedIcon from "@material-ui/icons/ExpandLessRounded";
-// import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
-// import DraftsRoundedIcon from "@material-ui/icons/DraftsRounded";
-// import MoveToInboxRoundedIcon from "@material-ui/icons/MoveToInboxRounded";
-import { TreeComponent } from "..";
+import { NavigationSidebarComponent } from "..";
 import {
   Avatar,
   BottomArea,
@@ -24,10 +14,13 @@ import {
   Sidebar,
   TopArea,
 } from "./styles";
+import { Screens } from "../../App";
 
 interface Props {
   open: boolean;
   setOpen: (value: boolean) => void;
+  screen: Screens;
+  setScreen: (value: Screens) => void;
 }
 
 const renderShapes = (): React.ReactNode => {
@@ -39,20 +32,166 @@ const renderShapes = (): React.ReactNode => {
   );
 };
 
-export const SidebarComponent: React.FunctionComponent<Props> = (
-  props: Props
-) => {
-  // TODO: em ecrãs mais pequenos a sidebar vai ser só os icons e o burguer menu tem de desaparecer da navbar
+const getScienceIcon = () => (
+  <svg
+    focusable="false"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    data-test-id="ScienceIcon"
+  >
+    <path d="M19.8 18.4 14 10.67V6.5l1.35-1.69c.26-.33.03-.81-.39-.81H9.04c-.42 0-.65.48-.39.81L10 6.5v4.17L4.2 18.4c-.49.66-.02 1.6.8 1.6h14c.82 0 1.29-.94.8-1.6z"></path>
+  </svg>
+);
+
+const getEngineeringIcon = () => (
+  <svg
+    focusable="false"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    data-test-iid="EngineeringIcon"
+  >
+    <path d="M9 15c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm13.1-8.16c.01-.11.02-.22.02-.34 0-.12-.01-.23-.03-.34l.74-.58c.07-.05.08-.15.04-.22l-.7-1.21c-.04-.08-.14-.1-.21-.08l-.86.35c-.18-.14-.38-.25-.59-.34l-.13-.93c-.02-.09-.09-.15-.18-.15h-1.4c-.09 0-.16.06-.17.15l-.13.93c-.21.09-.41.21-.59.34l-.87-.35c-.08-.03-.17 0-.21.08l-.7 1.21c-.04.08-.03.17.04.22l.74.58c-.02.11-.03.23-.03.34 0 .11.01.23.03.34l-.74.58c-.07.05-.08.15-.04.22l.7 1.21c.04.08.14.1.21.08l.87-.35c.18.14.38.25.59.34l.13.93c.01.09.08.15.17.15h1.4c.09 0 .16-.06.17-.15l.13-.93c.21-.09.41-.21.59-.34l.87.35c.08.03.17 0 .21-.08l.7-1.21c.04-.08.03-.17-.04-.22l-.73-.58zm-2.6.91c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm.42 3.93-.5-.87c-.03-.06-.1-.08-.15-.06l-.62.25c-.13-.1-.27-.18-.42-.24l-.09-.66c-.02-.06-.08-.1-.14-.1h-1c-.06 0-.11.04-.12.11l-.09.66c-.15.06-.29.15-.42.24l-.62-.25c-.06-.02-.12 0-.15.06l-.5.87c-.03.06-.02.12.03.16l.53.41c-.01.08-.02.16-.02.24 0 .08.01.17.02.24l-.53.41c-.05.04-.06.11-.03.16l.5.87c.03.06.1.08.15.06l.62-.25c.13.1.27.18.42.24l.09.66c.01.07.06.11.12.11h1c.06 0 .12-.04.12-.11l.09-.66c.15-.06.29-.15.42-.24l.62.25c.06.02.12 0 .15-.06l.5-.87c.03-.06.02-.12-.03-.16l-.52-.41c.01-.08.02-.16.02-.24 0-.08-.01-.17-.02-.24l.53-.41c.05-.04.06-.11.04-.17zm-2.42 1.65c-.46 0-.83-.38-.83-.83 0-.46.38-.83.83-.83s.83.38.83.83c0 .46-.37.83-.83.83zM4.74 9h8.53c.27 0 .49-.22.49-.49v-.02c0-.27-.22-.49-.49-.49H13c0-1.48-.81-2.75-2-3.45v.95c0 .28-.22.5-.5.5s-.5-.22-.5-.5V4.14C9.68 4.06 9.35 4 9 4s-.68.06-1 .14V5.5c0 .28-.22.5-.5.5S7 5.78 7 5.5v-.95C5.81 5.25 5 6.52 5 8h-.26c-.27 0-.49.22-.49.49v.03c0 .26.22.48.49.48zM9 13c1.86 0 3.41-1.28 3.86-3H5.14c.45 1.72 2 3 3.86 3z"></path>
+  </svg>
+);
+
+export const SidebarComponent: React.FunctionComponent<Props> = ({
+  open,
+  screen,
+  setScreen,
+}) => {
   return (
-    <Sidebar className={`sidebar ${props.open && "sidebar--expanded"}`}>
+    <Sidebar className={`sidebar ${open && "sidebar--expanded"}`}>
       {renderShapes()}
       <TopArea>
         <Avatar />
-        <Name>Pedro Torres</Name>
+        <Name>Rei do React</Name>
         <Job>Software developer</Job>
       </TopArea>
       <BottomArea>
-        <TreeComponent entries={[]} />
+        <NavigationSidebarComponent
+          entries={[
+            {
+              title: "Página inicial",
+              itemId: Screens.home,
+              icon: (): React.ReactNode => <HomeOutlined />,
+            },
+            {
+              title: "Armazém",
+              itemId: Screens.empty,
+              // you can use your own custom Icon component as well
+              // icon is optional
+              icon: (): React.ReactNode => <StorageOutlinedIcon />,
+              entries: [
+                {
+                  title: "Gestão Entradas",
+                  itemId: Screens.warehouseIn,
+                },
+                {
+                  title: "Gestão Saídas",
+                  itemId: Screens.warehouseOut,
+                  //
+                },
+              ],
+            },
+            {
+              title: "Laboratório",
+              itemId: Screens.laboratory,
+              icon: (): React.ReactNode => getScienceIcon(),
+            },
+            {
+              title: "Produção",
+              itemId: Screens.empty,
+              icon: (): React.ReactNode => getEngineeringIcon(),
+              entries: [
+                {
+                  title: "Planeamento",
+                  itemId: Screens.empty,
+                  entries: [
+                    {
+                      title: "Tinturaria",
+                      itemId: Screens.productionTinturaria,
+                    },
+                    {
+                      title: "Acabamentos",
+                      itemId: Screens.productionAcabamentos,
+                    },
+                  ],
+                },
+                {
+                  title: "Listagens",
+                  itemId: Screens.empty,
+                  entries: [
+                    {
+                      title: "Máquina",
+                      itemId: Screens.productionMaquina,
+                    },
+                    {
+                      title: "Operador",
+                      itemId: Screens.productionOperador,
+                    },
+                    {
+                      title: "Fase",
+                      itemId: Screens.productionFase,
+                    },
+                  ],
+                },
+              ],
+            },
+            // {
+            //   title: "System",
+            //   itemId: Screens.empty,
+            //   icon: (): React.ReactNode => (
+            //     <SettingsSystemDaydreamOutlinedIcon />
+            //   ),
+            //   entries: [
+            //     {
+            //       title: "Entidades",
+            //       itemId: Screens.empty,
+            //     },
+            //     {
+            //       title: "Utilizadores",
+            //       itemId: Screens.empty,
+            //     },
+            //     {
+            //       title: "Produção",
+            //       itemId: Screens.empty,
+            //       entries: [
+            //         {
+            //           title: "Referências",
+            //           itemId: Screens.empty,
+            //         },
+            //         {
+            //           title: "Artigos",
+            //           itemId: Screens.empty,
+            //         },
+            //         {
+            //           title: "Fibras",
+            //           itemId: Screens.empty,
+            //         },
+            //         {
+            //           title: "Fases",
+            //           itemId: Screens.empty,
+            //         },
+            //         {
+            //           title: "Processos",
+            //           itemId: Screens.empty,
+            //         },
+            //         {
+            //           title: "Máquinas",
+            //           itemId: Screens.empty,
+            //         },
+            //       ],
+            //     },
+            //     {
+            //       title: "Template",
+            //       itemId: Screens.empty,
+            //     },
+            //   ],
+            // },
+          ]}
+          clickEntry={setScreen}
+          screen={screen}
+        />
       </BottomArea>
     </Sidebar>
   );

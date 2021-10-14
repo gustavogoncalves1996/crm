@@ -97,7 +97,22 @@ export const getGlobalStyle = (colors: Color[]) => createGlobalStyle`
 
 export const Main = styled.main`
   display: flex;
-  background: #fafafc;
+  background: var(--background-color);
   width: 100vw;
   height: 100vh;
+`;
+
+export const Container = styled.section`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0px;
+  transition: 300ms ease-in-out;
+  position: relative;
+  z-index: 2;
+
+  &.main-content--expanded {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+  }
 `;
