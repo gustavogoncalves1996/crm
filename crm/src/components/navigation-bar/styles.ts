@@ -1,17 +1,22 @@
 import styled from "styled-components";
 
+interface StyledProps {
+  primary?: string;
+  surface?: string;
+  surface100?: string;
+}
+
 export const Navigation = styled.nav`
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
-  background-color: var(--color-primary);
   height: 54px;
   box-shadow: 0px 3px 8px rgb(0 0 0 / 10%), 0 6px 7px rgb(0 0 0 / 10%);
   transform: translateZ(1px);
+  ${(props: StyledProps): string => `background-color: ${props.primary};`}
 `;
 
 export const SidebarToggler = styled.nav`
-  background-color: var(--color-primary);
   width: 54px;
   height: 54px;
   border: 0;
@@ -23,13 +28,14 @@ export const SidebarToggler = styled.nav`
   flex-shrink: 0;
   transition: background-color 64ms ease-out;
   cursor: pointer;
+  ${(props: StyledProps): string => `background-color: ${props.primary};`}
 
   &:hover {
-    background-color: var(--surface-color-100);
+    ${(props: StyledProps): string => `background-color: ${props.surface100};`}
   }
 
   &:active {
-    background-color: var(--surface-color-100);
+    ${(props: StyledProps): string => `background-color: ${props.surface100};`}
   }
 
   &.active {
@@ -45,7 +51,7 @@ export const SidebarToggler = styled.nav`
   }
 
   & > span {
-    background-color: var(--surface-color);
+    ${(props: StyledProps): string => `background-color: ${props.surface};`}
     width: 20px;
     height: 0.2rem;
     margin-bottom: 0.3rem;
@@ -76,7 +82,7 @@ export const RightLinks = styled.div`
 `;
 
 export const Link = styled.a`
-  background-color: var(--color-primary);
+  ${(props: StyledProps): string => `background-color: ${props.primary};`}
   width: 64px;
   height: 54px;
   display: flex;
@@ -85,7 +91,7 @@ export const Link = styled.a`
   transition: background-color 64ms ease-out;
 
   &:hover {
-    background-color: var(--surface-color-100);
+    ${(props: StyledProps): string => `background-color: ${props.surface100};`}
   }
 `;
 

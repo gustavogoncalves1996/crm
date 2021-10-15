@@ -1,11 +1,16 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 import { flexBox } from "./assets";
+import { ThemeProps } from "./App";
+
+interface StyledProps {
+  color?: string;
+}
 
 export const AppContainer = styled.div`
   min-height: 100vh;
   height: auto;
-  background-color: var(--background-color, rgb(245, 242, 235));
+  ${(props: StyledProps): string => `background-color: ${props.color};`}
   padding: 0;
   margin: 0;
   list-style: none;
@@ -13,12 +18,15 @@ export const AppContainer = styled.div`
   ${flexBox}
 `;
 
-export interface Color {
-  key: string;
-  value: string;
-}
+export const getGlobalStyle = (theme: ThemeProps[]) => {
+  const background =
+    theme.find((entry) => entry.key === "background-color")?.value ||
+    "rgba(245, 242, 235, 1)";
+  const primary700 =
+    theme.find((entry) => entry.key === "color-primary-700")?.value ||
+    "rgba(120, 75, 74, 0.7)";
 
-export const getGlobalStyle = (colors: Color[]) => createGlobalStyle`
+  return createGlobalStyle`
 	*,
 	*::after,
 	*::before {
@@ -49,21 +57,21 @@ export const getGlobalStyle = (colors: Color[]) => createGlobalStyle`
 		*::-webkit-scrollbar-track {
 			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 			border-radius: 10px;
-			background-color: var(--background-color, rgb(245, 242, 235));
+			background-color: ${background};
 		}
 	  
 		*::-webkit-scrollbar {
 			width: 8px;
-			background-color: var(--background-color, rgb(245, 242, 235));
+			background-color: ${background};
 		}
 	  
 		*::-webkit-scrollbar-thumb {
 			border-radius: 10px;
 			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-			background-color: var(--color-primary-700, rgba(120, 75, 74, 0.7));
+			background-color: ${primary700};
 		}
 
-		${colors.map(({ key, value }) => `--${key}: ${value};`)}
+		${theme.map(({ key, value }) => `--${key}: ${value};`)}
 	}
 
 	body {
@@ -94,10 +102,11 @@ export const getGlobalStyle = (colors: Color[]) => createGlobalStyle`
 		  height: 100%;
 	  }
 `;
+};
 
 export const Main = styled.main`
   display: flex;
-  background: var(--background-color);
+  ${(props: StyledProps): string => `background: ${props.color};`}
   width: 100vw;
   height: 100vh;
 `;

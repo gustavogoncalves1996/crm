@@ -18,28 +18,49 @@ interface Props {
   entry: Entry;
   screen: Screens;
   clickEntry: (value: Screens) => void;
+  surface100: string;
+  surface500: string;
+  secondary: string;
 }
 
-const OptionEntryComponent: React.FunctionComponent<Props> = ({
+const OptionEntryComp: React.FunctionComponent<Props> = ({
   entry,
   screen,
   clickEntry,
+  surface100,
+  surface500,
+  secondary,
 }) => {
-  const click = (): void => {
+  const classname = React.useMemo(
+    (): string => (screen === entry.itemId ? "selected" : ""),
+    [screen, entry]
+  );
+  const click = React.useCallback((): void => {
     clickEntry(entry.itemId);
-  };
+  }, [clickEntry, entry]);
 
   return (
     <OptionEntryContainer>
       <OptionEntryMain
         onClick={click}
-        className={screen === entry.itemId ? "selected" : ""}
+        surface100={surface100}
+        surface500={surface500}
+        secondary={secondary}
+        className={classname}
       >
         {entry.icon && entry.icon()}
-        <OptionEntryText>{entry.title}</OptionEntryText>
+        <OptionEntryText secondary={secondary}>{entry.title}</OptionEntryText>
       </OptionEntryMain>
     </OptionEntryContainer>
   );
 };
 
-export default OptionEntryComponent;
+const areEqual = (prevProps: Props, nextProps: Props): boolean =>
+  prevProps.entry === nextProps.entry &&
+  prevProps.screen === nextProps.screen &&
+  prevProps.surface100 === nextProps.surface100 &&
+  prevProps.surface500 === nextProps.surface500 &&
+  prevProps.secondary === nextProps.secondary &&
+  prevProps.clickEntry === nextProps.clickEntry;
+
+export const OptionEntryComponent = React.memo(OptionEntryComp, areEqual);

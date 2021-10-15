@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 interface StyledProps {
-  open: boolean;
+  open?: boolean;
+  primary?: string;
+  secondary?: string;
+  surface100?: string;
+  surface500?: string;
 }
 
 export const NavigationSidebar = styled.div`
@@ -32,25 +36,25 @@ export const EntryMain = styled.div`
   border-radius: 6px;
 
   &:hover {
-    background-color: var(--surface-color-100);
+    ${(props: StyledProps): string => `background-color: ${props.surface100};`}
   }
 
   &.selected {
-    background-color: var(--surface-color-500);
+    ${(props: StyledProps): string => `background-color: ${props.surface500};`}
   }
 
   > svg {
     width: 20px;
     height: 20px;
-    color: var(--text-secondary-color);
-    fill: var(--text-secondary-color);
+    ${(props: StyledProps): string => `color: ${props.secondary};`}
+    ${(props: StyledProps): string => `fill: ${props.secondary};`}
   }
 `;
 
 export const EntryText = styled.div`
   display: flex;
   flex: 1;
-  color: var(--text-secondary-color);
+  ${(props: StyledProps): string => `color: ${props.secondary};`}
   padding: 0px 8px;
   font-size: 12px;
 `;
@@ -91,25 +95,25 @@ export const SubEntryMain = styled.div`
   border-radius: 6px;
 
   &.selected {
-    background-color: var(--surface-color-500);
+    ${(props: StyledProps): string => `background-color: ${props.surface500};`}
   }
 
   &:hover {
-    background-color: var(--surface-color-100);
+    ${(props: StyledProps): string => `background-color: ${props.surface100};`}
   }
 
   > svg {
     width: 20px;
     height: 20px;
-    color: var(--text-secondary-color);
-    fill: var(--text-secondary-color);
+    ${(props: StyledProps): string => `color: ${props.secondary};`}
+    ${(props: StyledProps): string => `fill: ${props.secondary};`}
   }
 `;
 
 export const SubEntryText = styled.div`
   display: flex;
   flex: 1;
-  color: var(--text-secondary-color);
+  ${(props: StyledProps): string => `color: ${props.secondary};`}
   padding: 0px 6px;
   font-size: 12px;
 `;
@@ -150,24 +154,24 @@ export const OptionEntryMain = styled.div`
   border-radius: 6px;
 
   &:hover {
-    background-color: var(--surface-color-100);
+    ${(props: StyledProps): string => `background-color: ${props.surface100};`}
   }
 
   &.selected {
-    background-color: var(--surface-color-500);
+    ${(props: StyledProps): string => `background-color: ${props.surface500};`}
   }
 
   > svg {
     width: 20px;
     height: 20px;
-    color: var(--text-secondary-color);
+    ${(props: StyledProps): string => `color: ${props.secondary};`}
   }
 `;
 
 export const OptionEntryText = styled.div`
   display: flex;
   flex: 1;
-  color: var(--text-secondary-color);
+  ${(props: StyledProps): string => `color: ${props.secondary};`}
   padding: 0px 6px;
   font-size: 11px;
 `;

@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
+interface StyledProps {
+  color: string;
+}
+
 export const Sidebar = styled.div`
   width: 0px;
   overflow: hidden;
-  background: var(--color-primary);
   background-size: 200%;
   background-position: 0 100%;
   position: absolute;
@@ -36,7 +39,8 @@ export const Shape = styled.div`
   left: 0;
   width: 400px;
   height: 400px;
-  background: linear-gradient(#316cc5 100%, transparent);
+  ${(props: StyledProps): string =>
+    `background: linear-gradient(${props.color} 100%, transparent);`}
   border-radius: 100%;
   margin-left: -142px;
   margin-top: -200px;
@@ -93,20 +97,20 @@ export const Avatar = styled.div`
 export const Name = styled.h3`
   font-size: 16px;
   margin-top: 12px;
-  color: var(--text-secondary-color);
   cursor: default;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  ${(props: StyledProps): string => `color: ${props.color};`}
 `;
 
 export const Job = styled.h4`
   font-size: 14px;
-  color: var(--text-secondary-color);
   cursor: default;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  ${(props: StyledProps): string => `color: ${props.color};`}
 `;
 
 export const BottomArea = styled.div`

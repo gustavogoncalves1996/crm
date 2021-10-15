@@ -10,7 +10,7 @@ interface Props {
   setScreen: (value: Screens) => void;
 }
 
-export const InputsManagement: React.FunctionComponent<Props> = ({
+const InputsManagementComp: React.FunctionComponent<Props> = ({
   open,
   setOpen,
   screen,
@@ -18,3 +18,11 @@ export const InputsManagement: React.FunctionComponent<Props> = ({
 }) => {
   return <Body>Gestão entradas</Body>;
 };
+
+const areEqual = (prevProps: Props, nextProps: Props): boolean =>
+  prevProps.open === nextProps.open &&
+  prevProps.setOpen === nextProps.setOpen &&
+  prevProps.setScreen === nextProps.setScreen &&
+  prevProps.screen === nextProps.screen;
+
+export const InputsManagement = React.memo(InputsManagementComp, areEqual);

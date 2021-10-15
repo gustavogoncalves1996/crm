@@ -52,7 +52,6 @@ export const Half = styled.div`
   width: 100%;
   height: 400px;
   box-shadow: 0px 3px 8px rgb(0 0 0 / 10%), 0 6px 7px rgb(0 0 0 / 10%);
-  background: var(--surface-color);
   border-radius: 6px;
 
   &:first-child {
