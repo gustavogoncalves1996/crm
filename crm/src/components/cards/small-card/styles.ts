@@ -37,6 +37,8 @@ export const Title = styled.h4`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
   ${(props: StyledProps): string => `color: ${props.color};`}
 
   @media (min-width: 800px) and (max-width: 1000px) {
@@ -50,11 +52,13 @@ export const Title = styled.h4`
 
 export const Description = styled.span`
   display: block;
-  font-weight: 600;
+  font-weight: 500;
+  cursor: default;
   font-size: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: "Fira Sans", sans-serif;
   ${(props: StyledProps): string => `color: ${props.color};`}
 
   @media (min-width: 800px) and (max-width: 1000px) {

@@ -57,6 +57,7 @@ export const EntryText = styled.div`
   ${(props: StyledProps): string => `color: ${props.secondary};`}
   padding: 0px 8px;
   font-size: 12px;
+  font-family: "Fira Sans", sans-serif;
 `;
 
 export const EntryOptions = styled.div`
@@ -116,6 +117,7 @@ export const SubEntryText = styled.div`
   ${(props: StyledProps): string => `color: ${props.secondary};`}
   padding: 0px 6px;
   font-size: 12px;
+  font-family: "Fira Sans", sans-serif;
 `;
 
 export const SubEntryOptions = styled.div`
@@ -174,4 +176,5 @@ export const OptionEntryText = styled.div`
   ${(props: StyledProps): string => `color: ${props.secondary};`}
   padding: 0px 6px;
   font-size: 11px;
+  font-family: "Fira Sans", sans-serif;
 `;

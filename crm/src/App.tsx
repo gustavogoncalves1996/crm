@@ -7,6 +7,7 @@ import {
   InputsManagement,
   OuputsManagement,
   ThemeManagement,
+  AccountManagement,
 } from "./screens";
 import { defaultGlobalColors } from "./helpers";
 
@@ -85,7 +86,7 @@ const AppComponent: React.FunctionComponent<{}> = () => {
             <ThemeManagement theme={props.theme} setTheme={props.setTheme} />
           );
         case Screens.conta:
-          return;
+          return <AccountManagement theme={props.theme} />;
         default:
           return;
       }

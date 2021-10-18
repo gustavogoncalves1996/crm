@@ -20,10 +20,38 @@ const ColorPickerComponent: React.FunctionComponent<Props> = ({
   type = Types.sketch,
 }) => {
   const [open, setOpen] = React.useState(false);
+
+  const toggle = React.useCallback((): void => setOpen(!open), [setOpen, open]);
+  const close = React.useCallback((): void => setOpen(false), [setOpen]);
   const getPicker = React.useCallback((): React.ReactNode => {
     switch (type) {
       case Types.circle:
-        return <CirclePicker color={color} onChangeComplete={onChange} />;
+        return (
+          <CirclePicker
+            color={color}
+            colors={[
+              "#113873",
+              "#4584E3",
+              "#689BE8",
+              "#8CB3EE",
+              "#004d40",
+              "#00796b",
+              "#009688",
+              "#79B473",
+              "#EFB55A",
+              "#ff9800",
+              "#ff6000",
+              "#D65C6C",
+              "#c2185b",
+              "#f44336",
+              "#bf360c",
+              "#455a64",
+              "#525252",
+              "#7986cb",
+            ]}
+            onChangeComplete={onChange}
+          />
+        );
       default:
         return (
           <SketchPicker
@@ -35,8 +63,6 @@ const ColorPickerComponent: React.FunctionComponent<Props> = ({
     }
   }, [color, onChange, type]);
 
-  const toggle = React.useCallback((): void => setOpen(!open), [setOpen, open]);
-
   if (type === Types.circle) {
     return <Body>{getPicker()}</Body>;
   }
@@ -45,7 +71,12 @@ const ColorPickerComponent: React.FunctionComponent<Props> = ({
     <Body>
       <Button color={color} onClick={toggle} />
       {open && (
-        <div style={{ position: "absolute", top: 26 }}>{getPicker()}</div>
+        <div
+          style={{ position: "absolute", left: 36, top: 0 }}
+          onMouseLeave={close}
+        >
+          {getPicker()}
+        </div>
       )}
     </Body>
   );

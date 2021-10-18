@@ -101,6 +101,8 @@ export const Name = styled.h3`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
   ${(props: StyledProps): string => `color: ${props.color};`}
 `;
 
@@ -110,6 +112,8 @@ export const Job = styled.h4`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 500;
   ${(props: StyledProps): string => `color: ${props.color};`}
 `;
 

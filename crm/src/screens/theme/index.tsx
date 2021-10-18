@@ -2,8 +2,8 @@ import React from "react";
 import { ColorResult } from "react-color";
 
 import { ThemeProps } from "../../App";
-import { ColorPicker, Types } from "../../components";
-import { Body, Full } from "./styles";
+import { CardComponent, ColorPicker, Types } from "../../components";
+import { Body, CircleWrapper, CustomColorWrapper, Text } from "./styles";
 
 interface Props {
   setTheme: (theme: ThemeProps[]) => void;
@@ -54,24 +54,45 @@ const ThemeManagementScreen: React.FunctionComponent<Props> = ({
       "rgba(69, 132, 227, 1)",
     [theme]
   );
+  const textColor = React.useMemo(
+    () =>
+      theme.find((entry) => entry.key === "text-primary-text-color")?.value ||
+      "rgb(102,102,102)",
+    [theme]
+  );
   return (
     <Body>
-      Temas
-      <Full>
-        Temas default
-        <ColorPicker
-          type={Types.circle}
-          color={color}
-          onChange={onChangeTheme}
-        />
-      </Full>
-      <Full>
-        Temas custom
-        <div>
-          Cor primária :
-          <ColorPicker color={color} onChange={onChangeTheme} />
-        </div>
-      </Full>
+      <CardComponent
+        open
+        title="Cores predefinidas"
+        description="Selecione uma das cores abaixo para definir o tema da aplicação"
+        color={color}
+        theme={theme}
+      >
+        <CircleWrapper>
+          <ColorPicker
+            type={Types.circle}
+            color={color}
+            onChange={onChangeTheme}
+          />
+        </CircleWrapper>
+      </CardComponent>
+      <CardComponent
+        open
+        title="Cores customizáveis"
+        description="Escolha uma cor a seu gosto para ser usada na aplicação"
+        color={color}
+        theme={theme}
+      >
+        <CustomColorWrapper>
+          <Text color={textColor}>Selecione uma cor:</Text>
+          <ColorPicker
+            type={Types.sketch}
+            color={color}
+            onChange={onChangeTheme}
+          />
+        </CustomColorWrapper>
+      </CardComponent>
     </Body>
   );
 };

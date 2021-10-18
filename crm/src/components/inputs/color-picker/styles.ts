@@ -11,8 +11,14 @@ export const Body = styled.div`
 
 export const Button = styled.button`
   cursor: pointer;
-  height: 24px;
-  width: 32px;
-  border-radius: 6px;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  border: none;
   ${(props: StyledProps): string => `background: ${props.color};`}
+
+  &:hover {
+    transform: scale(1.2);
+    transition: transform 100ms ease 0s;
+  }
 `;
