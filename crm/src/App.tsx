@@ -52,6 +52,12 @@ export enum Screens {
   productionFase = "productionFase",
   temas = "temas",
   conta = "conta",
+  systemEntities = "systemEntities",
+  systemUsers = "systemUsers",
+  systemReferences = "systemReferences",
+  systemPhases = "systemPhases",
+  systemProcesses = "systemProcesses",
+  systemTemplates = "systemTemplates",
 }
 
 const AppComponent: React.FunctionComponent<{}> = () => {
@@ -80,6 +86,18 @@ const AppComponent: React.FunctionComponent<{}> = () => {
         case Screens.productionOperador:
           return;
         case Screens.productionFase:
+          return;
+        case Screens.systemEntities:
+          return;
+        case Screens.systemUsers:
+          return;
+        case Screens.systemReferences:
+          return;
+        case Screens.systemPhases:
+          return;
+        case Screens.systemProcesses:
+          return;
+        case Screens.systemTemplates:
           return;
         case Screens.temas:
           return (
